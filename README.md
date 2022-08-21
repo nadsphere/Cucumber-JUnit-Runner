@@ -1,6 +1,6 @@
 # Cucumber-JUnit-Runner
 
-This project uses TestNG for runner
+This project uses JUnit for runner
 
 ## How to excution this project?
 **Way 1:** 
