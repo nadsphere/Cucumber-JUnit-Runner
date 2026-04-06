@@ -1,3 +1,30 @@
+# macOS
 .DS_Store
+
+# IDE
 .idea/
-.vscode
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Logs & Test Reports
+*.log
+test-output/
+cucumber-reports/
+
+# Gradle
+gradle/
+gradlew
+gradlew.bat
+
+# OS specific
+Thumbs.db

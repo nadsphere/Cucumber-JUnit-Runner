@@ -1,11 +1,18 @@
 package pages;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LandingPage {
-    public WebDriver driver;
+    private final WebDriver driver;
+    private final WebDriverWait wait;
+
     public LandingPage(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     By search = By.xpath("//input[@type='search']");
@@ -15,15 +22,15 @@ public class LandingPage {
     By addCartBtn = By.xpath("//button[contains(text(),'ADD TO CART')]");
 
     public void searchProduct(String name){
-        driver.findElement(search).sendKeys(name);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(search)).sendKeys(name);
     }
 
     public String getProductName(){
-        return driver.findElement(prdName).getText();
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(prdName)).getText();
     }
 
     public void selectTopDeals(){
-        driver.findElement(topDealsText).click();
+        wait.until(ExpectedConditions.elementToBeClickable(topDealsText)).click();
     }
 
     public String getTitleLandingPage(){
@@ -33,12 +40,12 @@ public class LandingPage {
     public void addItem(int quantity){
         int i = quantity-1;
         while (i>0){
-            driver.findElement(increBtn).click();
+            wait.until(ExpectedConditions.elementToBeClickable(increBtn)).click();
             i--;
         }
     }
 
     public void clickAddToCart(){
-        driver.findElement(addCartBtn).click();
+        wait.until(ExpectedConditions.elementToBeClickable(addCartBtn)).click();
     }
 }

@@ -23,25 +23,21 @@ public class OfferPageStepDef {
     }
 
     @Then("User search for {string} shortname in offers page")
-    public void userSearchForShortnameInOffersPage(String shortName) throws Exception{
+    public void userSearchForShortnameInOffersPage(String shortName) {
         switchToOfferPage();
-
         op.searchItem(shortName);
-        Thread.sleep(2000);
         offerProductName = op.getProductItem();
     }
 
     @And("validate product name in Offers Page matches with Landing Page")
-    public void validateProductNameInOffersPageMatchesWithLandingPage() throws Exception{
+    public void validateProductNameInOffersPageMatchesWithLandingPage() {
         Assert.assertEquals(offerProductName, base.landingProductName);
-        Thread.sleep(2000);
     }
 
     @Then("^User search for (.+) in Offers Page$")
-    public void userSearchForInOffersPage(String proName) throws Exception {
+    public void userSearchForInOffersPage(String proName) {
         switchToOfferPage();
         op.searchItem(proName);
-        Thread.sleep(2000);
         offerProductName = op.getProductItem();
     }
 }

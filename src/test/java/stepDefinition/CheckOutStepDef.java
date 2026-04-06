@@ -16,9 +16,8 @@ public class CheckOutStepDef {
     }
 
     @Then("^User proceed to checkout and validate the (.+) items in checkout page$")
-    public void userProceedToCheckoutAndValidateTheNameItemsInCheckoutPage(String productName) throws Exception {
+    public void userProceedToCheckoutAndValidateTheNameItemsInCheckoutPage(String productName) {
         checkOutPage.checkOutItem();
-        Thread.sleep(2000);
         landingPageName = checkOutPage.getProductTitle().substring(0,3);
         Assert.assertEquals(productName,landingPageName);
     }

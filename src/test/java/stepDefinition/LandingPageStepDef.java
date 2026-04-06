@@ -20,28 +20,22 @@ public class LandingPageStepDef {
     }
 
     @When("User searched with Shortname {string} and extract actual name of product")
-    public void userSearchedWithShortnameAndExtractActualNameOfProduct(String shortName) throws Exception{
+    public void userSearchedWithShortnameAndExtractActualNameOfProduct(String shortName) {
         lp.searchProduct(shortName);
-        Thread.sleep(2000);
-
         base.landingProductName = lp.getProductName().split(" -")[0].trim();
         System.out.println(base.landingProductName + " is extracted");
     }
 
     @When("^User searched with (.+) and extract it$")
-    public void userSearchedWithAndExtractIt(String proName) throws Exception{
+    public void userSearchedWithAndExtractIt(String proName) {
         lp.searchProduct(proName);
-        Thread.sleep(2000);
-
         base.landingProductName = lp.getProductName().split(" -")[0].trim();
         System.out.println(base.landingProductName + " is extracted");
     }
 
     @And("added {string} items of the selected product to the cart")
-    public void addedItemsOfTheSelectedProductToTheCart(String quantity) throws Exception{
+    public void addedItemsOfTheSelectedProductToTheCart(String quantity) {
         lp.addItem(Integer.parseInt(quantity));
-        Thread.sleep(2000);
         lp.clickAddToCart();
-        Thread.sleep(2000);
     }
 }
